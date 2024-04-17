@@ -1,7 +1,15 @@
+// ********************
+// created by - Prince Shah
+// created at - 16/04
+// Splash Screen
+// *******************
+
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+class SplashScreenPage extends StatelessWidget {
+  const SplashScreenPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +17,9 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Colors.amber[400],
       body: Center(
         child: SizedBox(
+          child: Image.asset('assets/images/logo_1.png'),
           width: 375,
           height: 237.55,
-          child: Image.asset('assets/images/logo_1.png'),
         ),
       ),
     );

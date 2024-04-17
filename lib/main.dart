@@ -4,6 +4,7 @@
 // ********************
 
 import 'package:donation_app/components/bottomNavbar.dart';
+import 'package:donation_app/pages/dbalance1_page.dart';
 import 'package:donation_app/pages/home_page.dart';
 import 'package:donation_app/pages/signin_page.dart';
 import 'package:donation_app/pages/signup_page.dart';
@@ -44,7 +45,8 @@ class _MyAppState extends State<MyApp> {
             onChange: changePageHandler,
             currentPage: selectedIndex.value,
           ),
-          body: Obx(() => pages[selectedIndex.value]),
+          body: const DonationBalancePage1(),
+          // body: Obx(() => pages[selectedIndex.value]),
         ));
   }
 }

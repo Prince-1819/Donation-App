@@ -1,3 +1,9 @@
+// ********************
+// created by - Prince Shah
+// created at - 16/04
+// *******************
+
+import 'package:donation_app/components/onboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -5,6 +11,8 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        // body: OnBoardingScreen(),
+        );
   }
 }
