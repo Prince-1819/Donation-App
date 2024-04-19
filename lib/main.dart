@@ -29,19 +29,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of application.
-  final List<Widget> pages = const [
-    HomePage(),
-    SignupPage(),
-    SigninPage(),
-  ];
-
-  final RxInt selectedIndex = 0.obs;
-
-  void changePageHandler(int index) {
-    selectedIndex.value = index;
-  }
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

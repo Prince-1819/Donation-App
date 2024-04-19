@@ -5,12 +5,12 @@
 
 import 'package:flutter/material.dart';
 
-class BootomNavbar extends StatelessWidget implements PreferredSizeWidget {
+class BottomNavBar extends StatelessWidget implements PreferredSizeWidget {
   final ValueChanged<int>? onChange;
 
   final int currentPage;
 
-  const BootomNavbar({super.key, this.onChange, required this.currentPage});
+  const BottomNavBar({super.key, this.onChange, required this.currentPage});
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@
 // ********************
 
 import 'package:donation_app/components/campaign_card.dart';
+import 'package:donation_app/variables/index.dart';
 import 'package:flutter/material.dart';
 
 class LatestCampaign extends StatelessWidget {
@@ -25,39 +26,29 @@ class LatestCampaign extends StatelessWidget {
         ),
         const SizedBox(height: 17),
         Container(
-          height: 223,
-          margin: const EdgeInsets.only(bottom: 22),
-          child: ListView(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            scrollDirection: Axis.horizontal,
-            children: const [
-              CampaignCard(
-                  imagePath: "assets/images/campaign-1.png",
-                  title: "Bantubarengan",
-                  description: "Bantu muslim indonesia ke mekkah.",
-                  collectedAmount: "24.000.000",
-                  progress: 100),
-              SizedBox(
-                width: 15,
-              ),
-              CampaignCard(
-                  imagePath: "assets/images/campaign-2.png",
-                  title: "nosial project",
-                  description: "antu warga pelosokntuk makan siang.",
-                  collectedAmount: "50.000.000",
-                  progress: 90),
-              SizedBox(
-                width: 15,
-              ),
-              CampaignCard(
-                  imagePath: "assets/images/campaign-2.png",
-                  title: "nosial project",
-                  description: "antu warga pelosokntuk makan siang.",
-                  collectedAmount: "50.000.000",
-                  progress: 120),
-            ],
-          ),
-        ),
+            height: 223,
+            margin: const EdgeInsets.only(bottom: 22),
+            child: ListView.builder(
+              padding: const EdgeInsets.only(left: 30, right: 15),
+              scrollDirection: Axis.horizontal,
+              itemCount: campaigns.length,
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    CampaignCard(
+                      imagePath: campaigns[index].imagePath,
+                      title: campaigns[index].title,
+                      description: campaigns[index].description,
+                      collectedAmount: campaigns[index].collectedAmount,
+                      progress: campaigns[index].progress,
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                  ],
+                );
+              },
+            )),
       ],
     );
   }

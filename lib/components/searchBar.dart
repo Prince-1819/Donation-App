@@ -28,7 +28,7 @@ class MYSearchBar extends StatelessWidget {
               ],
             ),
             child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 children: [
                   Expanded(
