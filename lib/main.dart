@@ -6,6 +6,8 @@
 import 'package:donation_app/components/bottomNavbar.dart';
 import 'package:donation_app/pages/dbalance1_page.dart';
 import 'package:donation_app/pages/home_page.dart';
+import 'package:donation_app/pages/savedCampaigns_page.dart';
+import 'package:donation_app/pages/searchCampaign_page.dart';
 import 'package:donation_app/pages/signin_page.dart';
 import 'package:donation_app/pages/signup_page.dart';
 import 'package:flutter/material.dart';
@@ -23,30 +25,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of application.
-  final List<Widget> pages = const [
-    HomePage(),
-    SignupPage(),
-    SigninPage(),
-  ];
-
-  final RxInt selectedIndex = 0.obs;
-
-  void changePageHandler(int index) {
-    selectedIndex.value = index;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          bottomNavigationBar: BootomNavbar(
-            onChange: changePageHandler,
-            currentPage: selectedIndex.value,
-          ),
-          body: const DonationBalancePage1(),
-          // body: Obx(() => pages[selectedIndex.value]),
+          body: SavedCampaignsPage(),
         ));
   }
 }

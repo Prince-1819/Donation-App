@@ -4,19 +4,19 @@
 // ********************
 
 import 'package:donation_app/components/bottomNavbar.dart';
-import 'package:donation_app/components/searchbar.dart';
+import 'package:donation_app/components/header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:donation_app/variables/index.dart';
+import 'package:get/get_core/get_core.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class SavedCampaignsPage extends StatefulWidget {
+  const SavedCampaignsPage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _SavedCampaignsPage createState() => _SavedCampaignsPage();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SavedCampaignsPage extends State<SavedCampaignsPage> {
   RxInt selectedIndex = 0.obs;
 
   void changePageHandler(int index) {
@@ -45,13 +45,18 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Column(
           children: [
-            const Padding(
-              padding:
-                  EdgeInsets.only(top: 60, left: 24, right: 24, bottom: 16),
-              child: MYSearchBar(),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 60, left: 24, right: 24, bottom: 16),
+              child: Header(
+                headerText: "Saved",
+                onTap: () {
+                  Get.back();
+                },
+              ),
             ),
             Expanded(
-              child: Obx(() => pages[selectedIndex.value]),
+              child: SavedCampaignsPage(),
             ),
           ],
         ),

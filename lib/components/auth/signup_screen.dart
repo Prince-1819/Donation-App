@@ -33,7 +33,7 @@ class _SignupScreenState extends State<SignupScreen> {
         name: nameController.text,
         email: emailController.text,
         password: passwordController.text);
-    UsersData.add(data);
+    usersData.add(data);
     nameController.text = "";
     emailController.text = "";
     passwordController.text = "";

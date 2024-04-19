@@ -21,7 +21,7 @@ class SigninScreen extends StatelessWidget {
     UserModel data = UserModel(
         email: emailController.text, password: passwordController.text);
     bool userExists = false;
-    for (var user in UsersData) {
+    for (var user in usersData) {
       if (user.email == data.email && user.password == data.password) {
         userExists = true;
         break;
