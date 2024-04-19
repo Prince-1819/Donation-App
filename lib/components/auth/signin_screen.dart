@@ -31,7 +31,7 @@ class _SigninScreenState extends State<SigninScreen> {
         email: emailController.text,
         password: passwordController.text,
       );
-      bool userExists = UsersData.any(
+      bool userExists = usersData.any(
           (user) => user.email == data.email && user.password == data.password);
       if (userExists) {
         Get.toNamed('/home_page');

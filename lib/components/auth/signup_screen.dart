@@ -154,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
         email: emailController.text,
         password: passwordController.text,
       );
-      UsersData.add(data);
+      usersData.add(data);
       nameController.clear();
       emailController.clear();
       passwordController.clear();
