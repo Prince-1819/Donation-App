@@ -32,7 +32,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         _currentPage -= 1;
       });
     } else {
-      Get.to(const SigninPage());
+      Get.toNamed('/sign_in');
     }
   }
 

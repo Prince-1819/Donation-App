@@ -1,20 +1,24 @@
-// ********************
-// created by - Prince Shah
-// created at - 16/04
-// Select Country
-// *******************
+// // ********************
+// // created by - Prince Shah
+// // created at - 16/04
+// // *******************
 
-// ignore_for_file: library_private_types_in_public_api, use_super_parameters
+/*
+In this page, user needs to select one country and after selecting the border color gets changed and
+If user is not selecting any country then Next button can't be enable so if user select a country then only they can click on Next button
+Next button redirect to fill profile page
+*/
 
 import 'package:donation_app/components/button.dart';
-import 'package:donation_app/pages/fillprofile_page.dart';
+import 'package:donation_app/components/progressBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CountryScreen extends StatefulWidget {
-  const CountryScreen({Key? key}) : super(key: key);
+  const CountryScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CountryScreenState createState() => _CountryScreenState();
 }
 
@@ -31,28 +35,36 @@ class _CountryScreenState extends State<CountryScreen> {
     {'flag': 'assets/images/flag_8.png', 'name': 'United States'},
   ];
 
+  bool isNextButtonEnabled = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          Row(
-            children: [
-              GestureDetector(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 40, left: 30),
+          Padding(
+            padding: const EdgeInsets.only(top: 30, left: 24, right: 24),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
                   child: Image.asset('assets/images/back.png'),
+                  onTap: () {
+                    Get.back();
+                  },
                 ),
-                onTap: () {
-                  // Go back to previous screen
-                },
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 40),
-                child: Image.asset('assets/images/progress.png'),
-              ),
-            ],
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 10),
+                    child: ProgressBar(
+                      progress: 200,
+                      height: 10,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Container(
             margin: const EdgeInsets.only(top: 20, left: 35, bottom: 20),
@@ -70,41 +82,42 @@ class _CountryScreenState extends State<CountryScreen> {
               onTap: () {
                 setState(() {
                   selectedCountry = myList[index]['name'];
+                  isNextButtonEnabled = true;
                 });
               },
               child: Card(
-                  elevation: 1,
-                  margin:
-                      const EdgeInsets.only(left: 30, right: 30, bottom: 10),
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    side: BorderSide(
-                      color: selectedCountry == myList[index]['name']
-                          ? const Color(0xFFfebc12)
-                          : const Color(0XFFECEFF3),
-                      width: 1,
-                    ),
+                elevation: 0,
+                margin: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  side: BorderSide(
+                    color: selectedCountry == myList[index]['name']
+                        ? const Color(0xFFfebc12)
+                        : Colors.black12,
+                    width: 1,
                   ),
-                  child: SizedBox(
-                    height: 60,
-                    child: ListTile(
-                      leading: Image.asset(myList[index]['flag']),
-                      title: Text(myList[index]['name']),
-                    ),
-                  )),
+                ),
+                child: SizedBox(
+                  height: 60,
+                  child: ListTile(
+                    leading: Image.asset(myList[index]['flag']),
+                    title: Text(myList[index]['name']),
+                  ),
+                ),
+              ),
             ),
           ),
-          const SizedBox(
-            height: 60,
-          ),
+          const SizedBox(height: 62),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: Button(
               buttonText: 'Next',
-              onTap: () {
-                Get.to(FillProfilePage());
-              },
+              onTap: isNextButtonEnabled
+                  ? () {
+                      Get.toNamed('fill_profile');
+                    }
+                  : null,
             ),
           ),
         ],

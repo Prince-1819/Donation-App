@@ -13,27 +13,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFfedb7e),
-              Color.fromARGB(255, 255, 153, 0),
-            ], // Colors you want to blend
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.0, 0.5], // Stops for each color
-            tileMode: TileMode.clamp,
+    return Scaffold(
+      body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFfedb7e),
+                Color.fromARGB(255, 255, 153, 0),
+              ], // Colors you want to blend
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [0.0, 0.5], // Stops for each color
+              tileMode: TileMode.clamp,
+            ),
           ),
-        ),
-        child: const Column(children: [
-          Padding(
-            padding: EdgeInsets.only(top: 60, left: 24, right: 24, bottom: 16),
-            child: MYSearchBar(),
-          ),
-          Expanded(
-            child: HomeScreen(),
-          )
-        ]));
+          child: const Column(children: [
+            Padding(
+              padding:
+                  EdgeInsets.only(top: 60, left: 24, right: 24, bottom: 16),
+              child: MYSearchBar(),
+            ),
+            Expanded(
+              child: HomeScreen(),
+            )
+          ])),
+    );
   }
 }

@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class ProgressBar extends StatefulWidget {
   double progress;
+  double height;
 
-  ProgressBar({super.key, required this.progress});
+  ProgressBar({super.key, required this.progress, this.height = 6.5});
 
   @override
   State<ProgressBar> createState() => _ProgressBarState();
@@ -21,7 +22,7 @@ class _ProgressBarState extends State<ProgressBar> {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
       width: double.infinity,
-      height: 6.5,
+      height: widget.height,
       child: Stack(
         children: [
           Container(

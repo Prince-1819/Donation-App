@@ -1,10 +1,13 @@
 // ********************
 // created by - Prince Shah
-// created at - 17/04
+// created at - 18/04
 // *******************
+
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:donation_app/components/button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class PopUp extends StatelessWidget {
@@ -22,19 +25,16 @@ class PopUp extends StatelessWidget {
     Map<String, dynamic>? data = method[payment_method];
     return Scaffold(
       body: SizedBox(
-        height: 500,
-        // color: Colors.lightBlue,
         child: Column(
           children: [
             Container(
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom:
-                      BorderSide(color: Colors.grey), // Define bottom border
+                  bottom: BorderSide(color: Color.fromARGB(255, 231, 226, 226)),
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, top: 10),
+                padding: const EdgeInsets.only(left: 20, top: 5),
                 child: ListTile(
                   leading: Image.asset(data!['img']),
                   title: Text(data['title']),
@@ -44,8 +44,7 @@ class PopUp extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom:
-                      BorderSide(color: Colors.grey), // Define bottom border
+                  bottom: BorderSide(color: Color.fromARGB(255, 231, 226, 226)),
                 ),
               ),
               child: Padding(
@@ -59,8 +58,7 @@ class PopUp extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom:
-                      BorderSide(color: Colors.grey), // Define bottom border
+                  bottom: BorderSide(color: Color.fromARGB(255, 231, 226, 226)),
                 ),
               ),
               child: Padding(
@@ -71,14 +69,13 @@ class PopUp extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 100,
-            ),
             Padding(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.only(top: 30, left: 24, right: 24),
               child: Button(
                 buttonText: 'Confirm',
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed('/transaction_history');
+                },
               ),
             ),
           ],

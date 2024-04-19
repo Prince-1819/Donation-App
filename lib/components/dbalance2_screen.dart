@@ -4,7 +4,7 @@
 // *******************
 
 import 'package:donation_app/components/button.dart';
-import 'package:donation_app/components/popup.dart';
+import 'package:donation_app/components/popup_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -103,8 +103,13 @@ class _DonationBalanceScreen2State extends State<DonationBalanceScreen2> {
                       child: Button(
                         buttonText: 'Topup Now',
                         onTap: () {
-                          Get.bottomSheet(PopUp(
-                            payment_method: _selectedPaymentMethod,
+                          Get.bottomSheet(Container(
+                            height: MediaQuery.of(context).size.height *
+                                0.3, // Set the height here
+
+                            child: PopUp(
+                              payment_method: _selectedPaymentMethod,
+                            ),
                           ));
                         },
                       ),

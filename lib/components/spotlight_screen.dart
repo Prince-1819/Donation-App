@@ -4,6 +4,7 @@
 // ********************
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Spotlight extends StatelessWidget {
   const Spotlight({super.key});
@@ -74,7 +75,9 @@ class Spotlight extends StatelessWidget {
                 Row(
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed('/donation_page1');
+                      },
                       child: Column(
                         children: [
                           Image.asset(
@@ -92,7 +95,9 @@ class Spotlight extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed('/transaction_history');
+                      },
                       child: Column(
                         children: [
                           Image.asset(
