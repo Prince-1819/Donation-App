@@ -1,3 +1,8 @@
+// ********************
+// created by - Prince Shah
+// created at - 24/04
+// ********************
+
 class Campaign {
   int id;
   String imagePath;

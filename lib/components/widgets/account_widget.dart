@@ -1,3 +1,8 @@
+// ********************
+// created by - Prince Shah
+// created at - 24/04
+// ********************
+
 //Here is the small components that are used in many pages
 
 import 'package:flutter/material.dart';

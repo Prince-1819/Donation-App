@@ -1,6 +1,9 @@
-import 'package:donation_app/components/button.dart';
+// ********************
+// created by - Prince Shah
+// created at - 25/04
+// ********************
+
 import 'package:donation_app/components/layout.dart';
-import 'package:donation_app/components/widgets/donation_reminder.dart';
 import 'package:donation_app/components/widgets/settings_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
