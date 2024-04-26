@@ -1,14 +1,14 @@
-// ********************
-// created by - Prajapati Chirag
-// created at - 17/04
-// ********************
-
 import 'package:flutter/material.dart';
 
 class MySecondarySearchBar extends StatefulWidget {
   final Function(String)? onChange;
+  final Function()? onFocus;
 
-  const MySecondarySearchBar({super.key, this.onChange});
+  const MySecondarySearchBar({
+    super.key,
+    this.onChange,
+    this.onFocus,
+  });
 
   @override
   State<MySecondarySearchBar> createState() => _MySecondarySearchBarState();
@@ -43,13 +43,21 @@ class _MySecondarySearchBarState extends State<MySecondarySearchBar> {
               child: TextField(
                 controller: txtController,
                 onChanged: (value) {
-                  widget.onChange!(txtController.text);
+                  if (widget.onChange != null) {
+                    widget.onChange!(txtController.text);
+                  }
+                },
+                onTap: () {
+                  if (widget.onFocus != null) {
+                    widget.onFocus!();
+                  }
                 },
                 decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 10, right: 10),
-                    hintText: 'Search Campaign',
-                    border: InputBorder.none,
-                    hintStyle: TextStyle(color: Colors.black26)),
+                  contentPadding: EdgeInsets.only(left: 10, right: 10),
+                  hintText: 'Search Campaign',
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(color: Colors.black26),
+                ),
               ),
             ),
           ],

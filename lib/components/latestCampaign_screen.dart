@@ -7,8 +7,41 @@ import 'package:donation_app/components/campaign_card.dart';
 import 'package:donation_app/variables/index.dart';
 import 'package:flutter/material.dart';
 
-class LatestCampaign extends StatelessWidget {
+class LatestCampaign extends StatefulWidget {
   const LatestCampaign({super.key});
+
+  @override
+  State<LatestCampaign> createState() => _LatestCampaignState();
+}
+
+class _LatestCampaignState extends State<LatestCampaign> {
+  saveCampaignHandler(int id) {
+    for (int i = 0; i < campaigns.length; i++) {
+      if (campaigns[i].id == id) {
+        campaigns[i].isSaved = !campaigns[i].isSaved;
+        String message =
+            campaigns[i].isSaved ? 'Campaign saved!' : 'Campaign unsaved!';
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Campaign Status'),
+              content: Text(message),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+        break; // Once updated, it will breaked
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +69,13 @@ class LatestCampaign extends StatelessWidget {
                 return Row(
                   children: [
                     CampaignCard(
+                      id: campaigns[index].id,
                       imagePath: campaigns[index].imagePath,
                       title: campaigns[index].title,
                       description: campaigns[index].description,
                       collectedAmount: campaigns[index].collectedAmount,
                       progress: campaigns[index].progress,
+                      onLongPress: (id) => saveCampaignHandler(id),
                     ),
                     const SizedBox(
                       width: 15,

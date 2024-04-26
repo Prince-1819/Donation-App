@@ -4,6 +4,7 @@
 // ********************
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MYSearchBar extends StatelessWidget {
   const MYSearchBar({Key? key}) : super(key: key);
@@ -54,7 +55,9 @@ class MYSearchBar extends StatelessWidget {
               Icons.bookmark_rounded,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed('/saved_campaigns_page');
+            },
           ),
         ),
       ],

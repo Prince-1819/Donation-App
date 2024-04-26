@@ -1,22 +1,20 @@
 // ********************
 // created by - Prince Shah
-// created at - 19/04
+// created at - 18/04
 // *******************
 
-import 'package:donation_app/components/bottomNavbar.dart';
-import 'package:donation_app/components/notification_screen.dart';
 import 'package:donation_app/components/transaction_history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class NotificationPage extends StatefulWidget {
-  const NotificationPage({super.key});
+class TransactionHistoryPage extends StatefulWidget {
+  const TransactionHistoryPage({super.key});
 
   @override
-  State<NotificationPage> createState() => _NotificationPageState();
+  State<TransactionHistoryPage> createState() => _TransactionHistoryPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
+class _TransactionHistoryPageState extends State<TransactionHistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,35 +31,35 @@ class _NotificationPageState extends State<NotificationPage> {
             tileMode: TileMode.clamp,
           ),
         ),
-        child: const Column(
+        child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 70.0),
+              padding: const EdgeInsets.only(top: 70.0),
               child: Row(
                 // later will replace with header component
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                     width: 20,
                   ),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     ; // Navigate to SigninPage when tapped
-                  //   },
-                  //   child: Image.asset('assets/images/back.png'),
-                  // ),
-                  SizedBox(
-                    width: 140,
+                  GestureDetector(
+                    onTap: () {
+                      Get.back(); // Navigate to SigninPage when tapped
+                    },
+                    child: Image.asset('assets/images/back.png'),
                   ),
-                  Text(
-                    "Notification",
+                  const SizedBox(
+                    width: 70,
+                  ),
+                  const Text(
+                    "Transaction",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
             ),
-            Expanded(child: NotificationScreen()),
+            const Expanded(child: TransactionHistoryScreen()),
           ],
         ),
       ),

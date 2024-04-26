@@ -74,7 +74,7 @@ class PopUp extends StatelessWidget {
               child: Button(
                 buttonText: 'Confirm',
                 onTap: () {
-                  Get.toNamed('/transaction_history');
+                  Get.toNamed('/home_page');
                 },
               ),
             ),

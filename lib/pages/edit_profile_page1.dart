@@ -1,11 +1,10 @@
-import 'package:donation_app/components/button.dart';
-import 'package:donation_app/components/input.dart';
-import 'package:donation_app/components/progressBar.dart';
-import 'package:donation_app/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:donation_app/components/button.dart';
+import 'package:donation_app/components/input.dart';
+import 'package:donation_app/controller/profile_controller.dart';
 
-class FillProfilePage extends StatelessWidget {
+class EditProfilePage1 extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final ProfileController _profileController = Get.put(ProfileController());
 
@@ -30,21 +29,15 @@ class FillProfilePage extends StatelessWidget {
                         Get.back();
                       },
                     ),
-                    Expanded(
-                      child: ProgressBar(
-                        progress: 200,
-                        height: 10,
-                      ),
+                    const SizedBox(
+                      width: 80,
+                    ),
+                    const Text(
+                      "Edit Profile",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 20, left: 30),
-                width: 370,
-                child: const Text(
-                  "Fill your profile",
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                 ),
               ),
               Column(
@@ -128,24 +121,33 @@ class FillProfilePage extends StatelessWidget {
                             ),
                           );
                         }).toList(),
+                        validator: (value) {
+                          if (value == null || value == '--Select-Gender--') {
+                            return 'Please select your gender';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                   ),
-                  const SizedBox(height: 120),
+                  const SizedBox(height: 160),
                   Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Button(
-                      buttonText: 'Complete',
+                      buttonText: 'Save',
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          print(
-                              'Full Name: ${_profileController.fullNameController.text}');
-                          print(
-                              'Email: ${_profileController.emailController.text}');
-                          print(
-                              'Phone Number: ${_profileController.phoneNumberController.text}');
-                          print('Gender: ${_profileController.selectedGender}');
-                          Get.toNamed('home_page');
+                          // Update profile with current values
+                          _profileController.updateProfile(
+                            fullName:
+                                _profileController.fullNameController.text,
+                            email: _profileController.emailController.text,
+                            phoneNumber:
+                                _profileController.phoneNumberController.text,
+                            selectedGender: _profileController.selectedGender!,
+                          );
+
+                          Get.toNamed('account_page');
                         }
                       },
                     ),

@@ -18,17 +18,15 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          color: Colors.pink,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: GestureDetector(
-              onTap: widget.onTap,
-              child: Image.asset("assets/images/back.png"),
-            ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: GestureDetector(
+            onTap: widget.onTap,
+            child: Image.asset("assets/images/back.png"),
           ),
         ),
         Container(
+          margin: const EdgeInsets.only(top: 10),
           alignment: Alignment.center,
           child: (() {
             if (widget.iconUrl != null) {

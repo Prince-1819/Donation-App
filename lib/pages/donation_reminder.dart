@@ -1,22 +1,21 @@
 // ********************
 // created by - Prince Shah
-// created at - 19/04
+// created at - 23/04
 // *******************
 
-import 'package:donation_app/components/bottomNavbar.dart';
-import 'package:donation_app/components/notification_screen.dart';
-import 'package:donation_app/components/transaction_history_screen.dart';
+import 'package:donation_app/components/account_screen.dart';
+import 'package:donation_app/components/donation_reminder_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class NotificationPage extends StatefulWidget {
-  const NotificationPage({super.key});
+class DonationReminderPage extends StatefulWidget {
+  const DonationReminderPage({super.key});
 
   @override
-  State<NotificationPage> createState() => _NotificationPageState();
+  State<DonationReminderPage> createState() => _DonationReminderPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
+class _DonationReminderPageState extends State<DonationReminderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,35 +32,35 @@ class _NotificationPageState extends State<NotificationPage> {
             tileMode: TileMode.clamp,
           ),
         ),
-        child: const Column(
+        child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 70.0),
+              padding: const EdgeInsets.only(top: 70.0),
               child: Row(
                 // later will replace with header component
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                     width: 20,
                   ),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     ; // Navigate to SigninPage when tapped
-                  //   },
-                  //   child: Image.asset('assets/images/back.png'),
-                  // ),
-                  SizedBox(
-                    width: 140,
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Image.asset('assets/images/back.png'),
                   ),
-                  Text(
-                    "Notification",
+                  const SizedBox(
+                    width: 50,
+                  ),
+                  const Text(
+                    "Donation Reminder",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
             ),
-            Expanded(child: NotificationScreen()),
+            const Expanded(child: DonationReminderScreen())
           ],
         ),
       ),

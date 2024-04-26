@@ -1,21 +1,20 @@
 // ********************
 // created by - Prince Shah
-// created at - 18/04
+// created at - 22/04
 // *******************
 
-import 'package:donation_app/components/transaction_history_screen.dart';
+import 'package:donation_app/components/account_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class TransactionHistoryPage extends StatefulWidget {
-  const TransactionHistoryPage({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
   @override
-  State<TransactionHistoryPage> createState() => _TransactionHistoryPageState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _TransactionHistoryPageState extends State<TransactionHistoryPage> {
+class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,16 +50,16 @@ class _TransactionHistoryPageState extends State<TransactionHistoryPage> {
                     child: Image.asset('assets/images/back.png'),
                   ),
                   const SizedBox(
-                    width: 70,
+                    width: 90,
                   ),
                   const Text(
-                    "Transaction",
+                    "Account",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
             ),
-            Expanded(child: TransactionHistoryScreen()),
+            const Expanded(child: AccountScreen())
           ],
         ),
       ),

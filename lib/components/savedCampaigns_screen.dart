@@ -1,29 +1,37 @@
 // ********************
 // created by - Prajapati Chirag
-// created at - 17/04
+// created at - 19/04
+// modified at - 19/04
 // ********************
 
-import 'package:donation_app/components/donationLocation.dart';
-import 'package:donation_app/components/latestCampaign_screen.dart';
-import 'package:donation_app/components/spotlight_screen.dart';
+import 'package:donation_app/components/campaignsGrid.dart';
+import 'package:donation_app/components/layout.dart';
+import 'package:donation_app/model/campaign_model.dart';
+import 'package:donation_app/variables/index.dart';
 import 'package:flutter/material.dart';
 
 class SavedCampaignsScreen extends StatelessWidget {
-  const SavedCampaignsScreen({super.key});
+  SavedCampaignsScreen({super.key});
+  final List<Campaign> savedCampaigns =
+      campaigns.where((campaign) => campaign.isSaved).toList();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40.0),
-            topRight: Radius.circular(40.0),
-          ),
-        ),
-        child: ListView(
-          children: const [Spotlight(), LatestCampaign(), DonationLocation()],
-        ));
+    return Layout(
+        child: Padding(
+      padding: const EdgeInsets.only(left: 24, right: 24),
+      child: ListView(
+        children: [
+          savedCampaigns.isNotEmpty
+              ? CampaignsGrid(campaigns: savedCampaigns)
+              : const Center(
+                  child: Text(
+                    "No Items Saved",
+                    style: TextStyle(fontSize: 20, color: Colors.black38),
+                  ),
+                )
+        ],
+      ),
+    ));
   }
 }

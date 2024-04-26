@@ -11,7 +11,7 @@ import 'package:donation_app/pages/onbording_page.dart';
 import 'package:donation_app/pages/signin_page.dart';
 import 'package:donation_app/pages/signup_page.dart';
 import 'package:donation_app/pages/splash_page.dart';
-import 'package:donation_app/pages/transaction_history.dart';
+import 'package:donation_app/pages/transaction_history_page.dart';
 import 'package:donation_app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/notification_page',
+      initialRoute: '/splash_screen',
       getPages: appRoutes(),
     );
   }

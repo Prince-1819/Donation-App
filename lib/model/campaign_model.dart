@@ -1,15 +1,19 @@
 class Campaign {
-  final String imagePath;
-  final String title;
-  final String description;
-  final String collectedAmount;
-  final double progress;
+  int id;
+  String imagePath;
+  String title;
+  String description;
+  String collectedAmount;
+  double progress;
+  bool isSaved;
 
   Campaign({
+    required this.id,
     required this.imagePath,
     required this.title,
     required this.description,
     required this.collectedAmount,
     required this.progress,
+    required this.isSaved,
   });
 }

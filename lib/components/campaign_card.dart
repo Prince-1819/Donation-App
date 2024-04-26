@@ -1,26 +1,27 @@
-// ********************
-// created by - Prajapati Chirag
-// created at - 17/04
-// ********************
-
 import 'package:donation_app/components/progressBar.dart';
 import 'package:flutter/material.dart';
 
+typedef CallbackAction = void Function(int id);
+
 class CampaignCard extends StatefulWidget {
+  final int id;
   final String imagePath;
   final String title;
   final String description;
   final String collectedAmount;
   final double progress;
+  final CallbackAction? onLongPress;
 
   const CampaignCard({
-    super.key,
+    Key? key,
+    required this.id,
     required this.imagePath,
     required this.title,
     required this.description,
     required this.collectedAmount,
     required this.progress,
-  });
+    this.onLongPress,
+  }) : super(key: key);
 
   @override
   State<CampaignCard> createState() => _CampaignCardState();
@@ -29,7 +30,13 @@ class CampaignCard extends StatefulWidget {
 class _CampaignCardState extends State<CampaignCard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onLongPress: () {
+        if (widget.onLongPress != null) {
+          widget.onLongPress!(widget.id);
+        }
+      },
+      child: Container(
         width: 170,
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
@@ -38,52 +45,46 @@ class _CampaignCardState extends State<CampaignCard> {
         ),
         child: Column(
           children: [
-            Image.asset(
-              widget.imagePath,
-            ),
-            Container(
+            Image.asset(widget.imagePath),
+            Padding(
               padding: const EdgeInsets.all(7),
               child: Container(
                 alignment: Alignment.topLeft,
                 height: 100,
                 child: ListView(
+                  padding: EdgeInsets.zero,
                   children: [
                     Text(
                       widget.title,
                       style: const TextStyle(fontSize: 11),
                     ),
-                    const SizedBox(
-                      height: 7,
-                    ),
+                    const SizedBox(height: 7),
                     Text(
                       widget.description,
                       style: const TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.w500),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    const SizedBox(
-                      height: 7,
-                    ),
+                    const SizedBox(height: 7),
                     ProgressBar(
                       progress: widget.progress,
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     Row(
                       children: [
                         const Text(
                           "Collected",
                           style: TextStyle(fontSize: 11),
                         ),
-                        const SizedBox(
-                          width: 7,
-                        ),
+                        const SizedBox(width: 7),
                         Text(
                           widget.collectedAmount,
                           style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.amber),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.amber,
+                          ),
                         ),
                       ],
                     )
@@ -92,6 +93,8 @@ class _CampaignCardState extends State<CampaignCard> {
               ),
             ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

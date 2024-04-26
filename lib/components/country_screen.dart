@@ -1,7 +1,8 @@
-// // ********************
-// // created by - Prince Shah
-// // created at - 16/04
-// // *******************
+// ********************
+// created by - Prince Shah
+// created at - 16/04
+// modified at - 18/04
+// *******************
 
 /*
 In this page, user needs to select one country and after selecting the border color gets changed and
@@ -58,7 +59,7 @@ class _CountryScreenState extends State<CountryScreen> {
                   child: Container(
                     margin: const EdgeInsets.only(left: 10),
                     child: ProgressBar(
-                      progress: 200,
+                      progress: 100,
                       height: 10,
                     ),
                   ),
